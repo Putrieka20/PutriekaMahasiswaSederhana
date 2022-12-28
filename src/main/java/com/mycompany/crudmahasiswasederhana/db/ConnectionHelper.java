@@ -22,17 +22,17 @@ public class ConnectionHelper {
     
     public static Connection getConnection() throws SQLException{
         String db = "sisteminformasi";
-        String url = "djbc:mysql:localhost:3306/" +db;
-        String username ="root";
-        String pass ="";
+        String url = "jdbc:mysql://localhost:3306/" +db;
+        String username = "root";
+        String pass = "";
         if(connect==null){
             try{
                 System.out.println("Membuat koneksi...");
                 Class.forName("com.mysql.cj.jdbc.Driver");
                 connect=DriverManager.getConnection(
-                        "jdbc:mysql://localhost:3306/buku_kontak",
-                        "root",
-                        "");
+                        url,
+                       username,
+                        pass);
                 st = connect.createStatement();
                 JOptionPane.showMessageDialog(null,"Terkoneksi");
                 System.out.println("Koneksi berhasil.");
